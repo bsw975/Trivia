@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Trivia</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css"  href="assets/css/trivia.css" />
+    <!-- // what's media="screen" -->
+</head>
+
+<body>
+    <header>TITLE</header>
+    <div id="container">
+        <div id="time-remaining">time-remaining</div>
+        <div id="current-question">current-question</div>
+        <form>
+            <input type="radio" name="gender" value="Answer1">
+            <label for="a1">One</label>
+            <br>
+            <input type="radio" name="gender" value="Answer2">
+            <label for="a2">Two</label>
+            <br>
+            <input type="radio" name="gender" value="Answer3">
+            <label for="a3">Three</label>
+        </form>
+    </div>
+    <button id="start">Start</button>
+    <div class="answer"></div>
+    
+    <!-- ====================SUDOCODE:====================
+        html
+        title, time-remaining, current question, options (RADIO w/ Submit), score?
+        congrats window - preset or dynamic?
+        sorry window - preset or dynamic?
+        
+        css
+        basic styling
+        
+        js
+        
+        * On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page). -->
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script src="assets/js/trivia.js"></script>
+    </body>
+    
+    </html>
