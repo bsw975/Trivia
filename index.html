@@ -6,35 +6,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <title>Trivia</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" type="text/css"  href="assets/css/trivia.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/trivia.css" />
     <!-- // what's media="screen" -->
 </head>
 
 <body>
-    <header><h1>TRIVIA GAME</h1></header>
+    <header>
+        <h1>TRIVIA GAME</h1>
+    </header>
     <div id="container">
         <button id="start-button">Play</button>
-        <h1 id="time-remaining"></h1>
-        <h1 id="current-question"></h1>
-        <form id="qa-form">
-            <input type="radio" name="user-choice" value="Answer1">
-            <label for="a1">One</label>
-            <br>
-            <input type="radio" name="user-choice" value="Answer2">
-            <label for="a2">Two</label>
-            <br>
-            <input type="radio" name="user-choice" value="Answer3">
-            <label for="a3">Three</label>
-            <br>
-            <input type="radio" name="user-choice" value="Answer4">
-            <label for="a4">Four</label>
-        </form>
-        <input type="button" value="Submit">
-        <div id="answer"></div>
-        <div><span id="win-count"></span></div>
-        <div><span id="loss-count"></span></div>
-    </div> <!--end container form-->
-    
+        <h2 id="time-remaining">
+            <h3 id="current-question">
+                <h3>
+                    <form id="qa-form">
+                        <input type="radio" name="user-choice" value="Answer0">
+                        <label for="a0"></label>
+                        <br>
+                        <input type="radio" name="user-choice" value="Answer1">
+                        <label for="a1"></label>
+                        <br>
+                        <input type="radio" name="user-choice" value="Answer2">
+                        <label for="a2"></label>
+                        <br>
+                        <input type="radio" name="user-choice" value="Answer3">
+                        <label for="a3"></label>
+                    </form>
+                </h3>
+                <input type="button" id="submit-button" value="Submit">
+                <div id="answer"></div>
+                <div>
+                    <span id="win-count"></span>
+                </div>
+                <div>
+                    <span id="loss-count"></span>
+                </div>
+            </h3>
+        </h2>
+    </div>
+    <!--end container form-->
+
     <!-- ====================SUDOCODE:====================
     html
         title, time-remaining, current question, options (RADIO w/ Submit), score?
@@ -44,8 +55,8 @@
         basic styling  
     js
         * On the final screen, show the number of correct answers, incorrect answers, and an option to restart the game (without reloading the page). -->
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-        <script src="assets/js/trivia.js"></script>
-    </body>
-    
-    </html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <script src="assets/js/trivia.js"></script>
+</body>
+
+</html>

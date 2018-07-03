@@ -33,13 +33,13 @@
 // ---evaluate
 
 //=========================================================================================================================================================================================VARIABLES:======================================================================================================================================================================================================================
-var qaPairs = [{ q: "What is 2+2 in George Orwell's '1984'?", right: 5, wrong1: 4, wrong2: 22, wrong3: 2 },
-{ q: "Who wrote The Cat in the Hat?", right: "Dr. Seuss", wrong1: "Ted Gauss", wrong2: "Roald Dahl", wrong3: "Adam Smith" },
-{ q: "What is the square root of 49?", right: 7, wrong1: 4, wrong2: 22, wrong3: 2 },
-{ q: "When was the Magna Carta signed?", right: "1215", wrong1: "1642", wrong2: "1066", wrong3: "1941" },
-{ q: "Bill Gates allegedly said how much memory 'ought to be enough for anyone?'", right: "640 Kilobytes", wrong1: "2 bits", wrong2: "500 Megabytes", wrong3: "1.21 Gigawatts" },
-{ q: "What is LeBron James' NBA finals record (as of 7/2018?", right: "3 wins, 6 losses", wrong1: "5 wins, 2 losses", wrong2: "2 wins, 3 losses", wrong3: "1 win, 6 losses" }];
-var randomArray = [2, 0, 1, 3, 5, 4];
+var qaPairs = [ { q: "What is 2+2 in George Orwell's '1984'?", right: 5, wrong1: 4, wrong2: 22, wrong3: 2 },
+                { q: "Who wrote The Cat in the Hat?", right: "Dr. Seuss", wrong1: "Ted Gauss", wrong2: "Roald Dahl", wrong3: "Adam Smith" },
+                { q: "What is the square root of 49?", right: 7, wrong1: 4, wrong2: 22, wrong3: 2 },
+                { q: "When was the Magna Carta signed?", right: "1215", wrong1: "1642", wrong2: "1066", wrong3: "1941" },
+                { q: "Bill Gates allegedly said how much memory 'ought to be enough for anyone?'", right: "640KB", wrong1: "2 bits", wrong2: "500MB", wrong3: "1.21Gbits" },
+                { q: "What is LeBron James' NBA finals record?", right: "3 wins, 6 losses", wrong1: "5 wins, 2 losses", wrong2: "2 wins, 3 losses", wrong3: "1 win, 6 losses" } ];
+var randomArray = [2,0,1,3,5,4];
 var numRight = 0;
 var numWrong = 0;
 var questionNum = 0;
@@ -57,7 +57,7 @@ var answerValue = "Answer4";  // answerValue is the label of where the CORRECT a
 //=========================================================================================================================================================================================FUNCTIONS======================================================================================================================================================================================================================
 window.onload = function () {
     $("#start-button").on("click", timer.start);
-    $("input[type='button']").click(function () {
+    $("input[type='button']").click(function(){
         var userAnswer = $("input[name='user-choice']:checked").val();
         console.log("Called from user-button click" + userAnswer);
         if (userAnswer == answerValue) {
@@ -69,7 +69,7 @@ window.onload = function () {
 } //end window.onload
 
 
-function showAnswer(correctAnswer) { //called for right or wrong answer
+function showAnswer (correctAnswer) { //called for right or wrong answer
     // $("#qa-form").empty(); // these two lines empty game div below time-s up
     timer.stop(); // TO DO - remember & learn when to use & not use ()s for functions. Maybe b/c Here it's not obvious THAT A FUnction is being called. A function can return a variable. For setInterval(FUNCTION, it is.)
     if (correctAnswer == true) {
@@ -80,7 +80,7 @@ function showAnswer(correctAnswer) { //called for right or wrong answer
         $("#answer").text("Sorry! The answer is " + qaPairs[randomArray[questionNum]].right);
         numWrong++;
         $("#loss-count").text("Losses: " + numWrong);
-    }
+    }    
     if (questionNum == qaPairs.length - 1) {
         $("#time-remaining").text("Game over!!");
         $("#answer").empty();
@@ -98,14 +98,14 @@ function showAnswer(correctAnswer) { //called for right or wrong answer
     // Q: the hard part of which is to attach the ID
 } // Do this after timer.time == 0
 
-function populateQuestion() {
+function populateQuestion () {
     var Q1 = $("<input>");
     Q1.attr("type", "radio");
     Q1.attr("name", "user-choice");
-    Q1.attr("value", "Answer0");
+    Q1.attr("value", "Answer1");
     Q1.attr("checked", false);
     var Q1label = $("<label>");
-    Q1label.attr("a0");
+    Q1label.attr("a1");
     Q1label.append("<br>");
     Q1.append(Q1label);
     $("#current-question").append(Q1);
@@ -122,20 +122,20 @@ function populateQuestion() {
     var Q3 = $("<input>");
     Q3.attr("type", "radio");
     Q3.attr("name", "user-choice");
-    Q3.attr("value", "Answer2");
+    Q3.attr("value", "Answer1");
     Q3.prop("checked", false);
     var Q3label = $("<label>");
-    Q3label.attr("a2");
+    Q3label.attr("a1");
     Q3label.append("<br>");
     Q3.append(Q3label);
     $("#current-question").append(Q3);
     var Q4 = $("<input>");
     Q4.attr("type", "radio");
     Q4.attr("name", "user-choice");
-    Q4.attr("value", "Answer3");
+    Q4.attr("value", "Answer1");
     Q4.prop("checked", false);
     var Q4label = $("<label>");
-    Q4label.attr("a3");
+    Q4label.attr("a1");
     Q4label.append("<br>");
     Q4.append(Q4label);
     $("#current-question").append(Q4);
@@ -152,7 +152,7 @@ var timer = {
     start: function () {
         if (questionNum == 0) {
             $("#start-button").remove();
-        }
+        }    
         $("#answer").text("");
         clearInterval(answerInterval);
         // console.log("In timer.start:function(), answerInterval is " + answerInterval);
@@ -161,32 +161,13 @@ var timer = {
         timer.time = answerInThisManySeconds;
         $("#current-question").text(qaPairs[randomArray[questionNum]].q);
         // TO DO, randomize the order of the answers
-        var correctAnswer = Math.floor(Math.random() * 4);
-        var wrongNumFromQAPair = 1; //wrong1, wrong2, then wrong3
-        var wrong1 = qaPairs[randomArray[questionNum]].wrong1;
-        var wrong2 = qaPairs[randomArray[questionNum]].wrong2;
-        var wrong3 = qaPairs[randomArray[questionNum]].wrong3;
-        for (i = 0; i < 4; i++) {
-            var labelValue = "label[for=a" + i + "]";
-            if (i == correctAnswer) { //because i goes 0 to 3, but wrong only goes 1 to 3, it's hard
-                $(labelValue).html(qaPairs[randomArray[questionNum]].right); //working
-                answerValue = "Answer" + i; //answerValue is the label of where the CORRECT answer is
-            }
-            else if (wrongNumFromQAPair == 1) {
-                $(labelValue).html(wrong1); //working
-                wrongNumFromQAPair++
-            }
-            else if (wrongNumFromQAPair == 2) {
-                $(labelValue).html(wrong2); //working
-                wrongNumFromQAPair++
-            }
-            else if (wrongNumFromQAPair == 3) {
-                $(labelValue).html(wrong3); //working
-            } else { $("body").remove(); document.write("You broke it")}
-        }
-        // $('label[for=a1]').html(qaPairs[randomArray[questionNum]].wrong1); //working
-        // $('label[for=a2]').html(qaPairs[randomArray[questionNum]].wrong2); //working
-        // $('label[for=a3]').html(qaPairs[randomArray[questionNum]].wrong3); //working
+        var randomAnswer = Math.floor(Math.random() * 4);
+        console.log(randomAnswer)
+        $('label[for=a1]').html(qaPairs[randomArray[questionNum]].wrong1); //working
+        $('label[for=a2]').html(qaPairs[randomArray[questionNum]].wrong2); //working
+        $('label[for=a3]').html(qaPairs[randomArray[questionNum]].wrong3); //working
+        answerValue = "Answer4"; //answerValue is the label of where the CORRECT answer is
+        $('label[for=a4]').html(qaPairs[randomArray[questionNum]].right); //working
         $("#one").empty("foo"); // what is this?
         $("#one").html("bar"); // and this?
         // DONE: Use setInterval to start the count here and set the clock to running.

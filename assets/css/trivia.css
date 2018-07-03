@@ -1,12 +1,21 @@
 header {
     text-align: center;
 }
-
+body {
+    background: #a8ecee;
+}
 #container {
     position: relative;
+    margin: 0 auto;
     background: #ccc;
-    left: 100px;
+    /* left: 100px; */
     top: 60px;
-    width: 400px;
+    width: 200px;
+    height: 360px;
     padding: 20px;
+}
+#start-button {
+    font-size: 24px;
+    width: 80px;
+    height: 36px;
 }
